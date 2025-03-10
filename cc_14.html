@@ -1,0 +1,77 @@
+<!-- Task 1 - Base Structure Created -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support Ticket System</title>
+    <style>
+        .ticket-card {
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .high-priority {
+            border: 2px solid black;
+            background-color: lightpink;
+        }
+        .other-priority {
+            border: 2px solid black;
+            background-color: rgb(255, 255, 163);
+        }
+        .ticket-header{
+            color: rgb(255, 95, 36);
+        }
+        header {
+            width: 100%;
+            padding: 20px;
+        }
+        header, footer {
+            text-align: center;
+            align-content: center;
+            background-color: rgba(250, 38, 38, 0.888);
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+        footer p {
+            margin-bottom:20px;
+        }
+        body {
+            font-family:'Courier New', Courier, monospace;
+            margin: 0;
+            padding-bottom:60px;
+        }
+        main {
+            padding: 20px;
+        }
+        .resolve-btn, .save-btn, input[type="text"] {
+            width: 200px;
+        }
+        #addTicketBtn{
+            background-color: white;
+            margin-left:10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <header> <h1>Customer Support Ticket System</h1></header>
+    <main>
+        <div id="ticketContainer">
+            <!--Support tickets will be dynamically added-->
+        </div>
+        <div>
+            <!--Add Ticket button-->
+            <button id="addTicketBtn">Add Ticket</button>
+        </div>
+    </main>
+    
+    <footer><p>2025 Customer Support System</p></footer>
+    <script src="cc_14.js"></script>
+</body>
+</html>
