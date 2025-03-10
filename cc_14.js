@@ -26,6 +26,13 @@ function createSupportTicket(customer, issue, priority)
     resolveBtn.setAttribute('class', 'resolve-btn');
     resolveBtn.textContent = 'Resolve';
     ticketCard.append(resolveBtn); 
+
+    //task 4: implementing ticket resolution with even bubbling
+    resolveBtn.addEventListener('click', (event) => {ticketCard.remove();
+    event.stopPropagation();});
+
+    ticketCard.addEventListener('click', () => {console.log('Clicked On Support Ticket:', custName.textContent);
+    });
 }
 
 //creating example support tickets
