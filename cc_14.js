@@ -27,12 +27,64 @@ function createSupportTicket(customer, issue, priority)
     resolveBtn.textContent = 'Resolve';
     ticketCard.append(resolveBtn); 
 
-    //task 4: implementing ticket resolution with even bubbling
-    resolveBtn.addEventListener('click', (event) => {ticketCard.remove();
-    event.stopPropagation();});
+//task 4: implementing ticket resolution with even bubbling
+resolveBtn.addEventListener('click', (event) => {ticketCard.remove();
+event.stopPropagation();});
 
-    ticketCard.addEventListener('click', () => {console.log('Clicked On Support Ticket:', custName.textContent);
-    });
+ticketCard.addEventListener('click', () => {console.log('Clicked On Support Ticket:', custName.textContent);});
+
+//task 5: inline editing of support tickets
+ticketCard.addEventListener('dblclick', () => 
+{
+    if(ticketCard.querySelector('.save-btn'))
+    {
+        return;
+    }
+    ticketCard.innerHTML = '';
+
+    const nameInput = document.createElement('input'); //creating a new element to edit customer's name
+    nameInput.setAttribute('type', 'text');
+    nameInput.value = custName.textContent;
+
+    const issueInput = document.createElement('input'); //creating a new element to edit customer's issue description
+    issueInput.setAttribute('type', 'text');
+    issueInput.value = issueDesc.textContent;
+
+    const priorityInput = document.createElement('input'); //creating a new element to ticket's priority
+    priorityInput.setAttribute('type', 'text');
+    priorityInput.value = priorityLabel.textContent.replace('Priority: ', '');
+
+    const saveBtn = document.createElement('button'); //creating a new element that will create a save button to update values
+    saveBtn.setAttribute('class', 'save-btn');
+    saveBtn.textContent = 'Save';
+
+    ticketCard.appendChild(nameInput);
+    ticketCard.appendChild(document.createElement('br'));
+    ticketCard.appendChild(issueInput);
+    ticketCard.appendChild(document.createElement('br'));
+    ticketCard.appendChild(priorityInput);
+    ticketCard.appendChild(document.createElement('br'));
+    ticketCard.appendChild(saveBtn);
+    ticketCard.appendChild(document.createElement('br'));
+    ticketCard.appendChild(resolveBtn);
+
+    saveBtn.onclick = () => {
+        custName.textContent = nameInput.value;
+        
+        issueDesc.textContent = issueInput.value;
+        
+        priorityLabel.textContent = `Priority: ${priorityInput.value}`;
+        
+        ticketCard.innerHTML = '';
+        ticketCard.append(custName, issueDesc, priorityLabel, resolveBtn);
+        
+        styleSingleCard(ticketCard)
+    };
+});
+
+divTicketContainer.appendChild(ticketCard);
+styleSingleCard(ticketCard);
+return ticketCard;
 }
 
 //creating example support tickets
