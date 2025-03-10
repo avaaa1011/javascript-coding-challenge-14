@@ -40,3 +40,26 @@ document.getElementById('addTicketBtn').addEventListener('click', () =>
     const currentTicket = createSupportTicket('Jason Todd', 'Batsystem Virus', 'High');
     styleSingleCard(currentTicket);
 })
+
+//task 3: converting nodelists to arrays for bulk updates
+function highlightHighPriorityTickets()
+{
+    const highPriorityTickets = document.querySelectorAll('.ticket-card'); //selects all support tickets with high priority
+    const arrayTickets = Array.from(highPriorityTickets); //converting nodelist into an array
+    arrayTickets.forEach((ticket) => {styleSingleCard(ticket); }) //updates the style of high priority tickets
+}
+
+function styleSingleCard(currentCard) //function that will update the style of high-priority tickets
+{
+    const priority = currentCard.querySelector('.priority-label');
+    if(priority.textContent.replace('Priority: ', '').toLowerCase() === 'high')
+    {
+        currentCard.classList.remove('other-priority');
+        currentCard.classList.add('high-priority');
+    }
+    else
+    {
+        currentCard.classList.remove('high-priority');
+        currentCard.classList.add('other-priority');
+    }
+}
